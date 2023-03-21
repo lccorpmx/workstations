@@ -1,4 +1,4 @@
-name: release CI/CD
+name: main CI/CD
 
 # Controls when the action will run. 
 on:
