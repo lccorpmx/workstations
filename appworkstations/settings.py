@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'graphene_django',
+    'pcs'
 ]
 
 MIDDLEWARE = [
@@ -126,5 +127,5 @@ STATIC_URL = '/static/'
 
 
 GRAPHENE = {
-    'SCHEMA': 'workstations.schema.schema',
+    'SCHEMA': 'appworkstations.schema.schema',
 }
