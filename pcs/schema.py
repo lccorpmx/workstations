@@ -66,3 +66,7 @@ class CreateWS(graphene.Mutation):
 #4
 class Mutation(graphene.ObjectType):
     create_ws = CreateWS.Field()
+
+
+
+schema = graphene.Schema(query=Query, mutation=Mutation)
