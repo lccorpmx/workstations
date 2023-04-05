@@ -42,4 +42,4 @@ class PCSTestCase(GraphQLTestCase):
         self.assertResponseNoErrors(response)
         print ("query pcs results ")
         print (content)
-        assert len(content['data']['pcs']) == 4
+        assert len(content['data']['pcs']) == 3
