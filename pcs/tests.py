@@ -26,6 +26,14 @@ PCS_QUERY = '''
  }
 '''
 
+CREATE_WS_MUTATION= '''
+    mutation createWs($cpu: String, $data: String, $gabo: String, $gpu: String, $mobo: String, $monitor: String, $mouse: String, $psu: String, $ram: String, $teclado: String, ){
+        createWs(cpu: $cpu, data: $data, gabo: $gabo, gpu: $gpu, mobo: $mobo, monitor: $monitor, mouse: $mouse, psu: $psu, ram: $ram, teclado: $teclado){
+            cpu
+      }
+  }
+'''
+
 class PCSTestCase(GraphQLTestCase):
     GRAPHQL_SCHEMA = schema
     def setUp(self):
@@ -43,3 +51,16 @@ class PCSTestCase(GraphQLTestCase):
         print ("query pcs results ")
         print (content)
         assert len(content['data']['pcs']) == 4
+
+    def test_createWS_mutation(self):
+
+        response = self.query(
+            CREATE_WS_MUTATION,
+            variables={'cpu':'ryzen 7', 'data':'360 ssd', 'gabo':'mun frust', 'gpu':'gpu 1050', 'mobo':'asus', 'monitor':'asus', 'mouse':'logitech', 'psu':'corsair', 'ram':'36bg', 'teclado':'corsair'}
+        )
+        print('mutation ')
+        print(response)
+        content = json.loads(response.content)
+        print(content)
+        self.assertResponseNoErrors(response)
+        self.assertDictEqual({"createWs": {"cpu": "ryzen 7"}}, content['data'])
